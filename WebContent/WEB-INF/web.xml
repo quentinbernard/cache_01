@@ -6,7 +6,16 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Cache</servlet-name>
-    <url-pattern>/cache</url-pattern>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Visite</servlet-name>
+    <servlet-class>servlet.Visite</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Visite</servlet-name>
+    <url-pattern>/visite</url-pattern>
   </servlet-mapping>
   
    <jsp-config>

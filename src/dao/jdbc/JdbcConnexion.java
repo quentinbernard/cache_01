@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 public class JdbcConnexion {
-	private static String url= "jdbc:mysql://localhost:3306/cache";
+	private static String url= "jdbc:mysql://localhost:3306/cache_01";
     
     private static String user = "root";
     private static String mdp = "";
