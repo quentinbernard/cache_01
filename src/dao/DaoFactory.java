@@ -2,6 +2,7 @@ package dao;
 
 public abstract class DaoFactory {
 	public abstract CachetteDao getCachetteDao ();
+	public abstract VisiteDao getVisiteDao ();
 	public static DaoFactory getDaoFactory(sourceData type)  
     {
         switch (type)
