@@ -14,7 +14,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Cache</servlet-name>
-    <url-pattern>/home</url-pattern>
+    <url-pattern>/cache</url-pattern>
   </servlet-mapping>
   
   <servlet>
