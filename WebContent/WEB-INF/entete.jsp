@@ -47,6 +47,9 @@
              <ul class="nav navbar-nav">
                 <li class="active"><a href="/visite"><span class="glyphicon glyphicon-camera"></span> Visites</a></li>
             </ul>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/cache"><span class="glyphicon glyphicon-camera"></span> Caches</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
             </ul>
