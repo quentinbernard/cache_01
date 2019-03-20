@@ -15,8 +15,8 @@ import metier.Cachette;
 /**
  * Servlet implementation class Cache
  */
-@WebServlet("/Cache")
-public class Cache extends HttpServlet {
+@WebServlet("/Home")
+public class Home extends HttpServlet {
 	static DaoFactory maFactory;
     static CachetteDao cachetteManager; 
     
@@ -25,13 +25,13 @@ public class Cache extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Cache() {
+    /*public Cache() {
         super();
         // TODO Auto-generated constructor stub
-    }
+    }*/
     public void init() throws ServletException {
     	maFactory = DaoFactory.getDaoFactory(sourceData.JDBC);
-    	Cache.cachetteManager = maFactory.getCachetteDao();
+    	Home.cachetteManager = maFactory.getCachetteDao();
     }
 
 	/**
@@ -39,8 +39,8 @@ public class Cache extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("cachettes",  cachetteManager.findAll());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+		request.setAttribute("cachettesActives",  cachetteManager.findAllActives());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
 	}
 
 	/**
@@ -48,25 +48,9 @@ public class Cache extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Cachette c;
-
-		switch (request.getParameter("btn_cache"))
-		{
-			case "CREER":
-				c = new Cachette(request.getParameter("nom_cachette"),request.getParameter("coordonnees_cachette"),request.getParameter("etat_cachette"),request.getParameter("description_cachette"),Integer.parseInt(request.getParameter("createur")));
-				cachetteManager.create(c);
-				break;
-			case "MODIFIER":
-				c = cachetteManager.find(Integer.parseInt(request.getParameter("idt_cachette")));
-				c.setEtat_cache(request.getParameter("etat_cachette"));
-				cachetteManager.update(c);
-				break;
-			default:
-				break;
-		}
-		request.setAttribute("cachettes",  cachetteManager.findAll());
+		request.setAttribute("cachettesActives",  cachetteManager.findAllActives());		
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
 	}
 
 }
