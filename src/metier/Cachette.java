@@ -1,6 +1,7 @@
 package metier;
 
 import java.time.LocalDate;
+import java.sql.Date;
 
 public class Cachette {
 	
@@ -46,6 +47,7 @@ public class Cachette {
 		this.nom_cache = nom_cache;
 		this.coordonnees_cache = coordonnees_cache;
 		this.etat_cache = etat_cache;
+		this.date_creation = LocalDate.now();
 		this.id_createur = id_createur;
 		this.description_cache = description_cache;
 	}

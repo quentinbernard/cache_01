@@ -53,13 +53,13 @@ public class JdbcDaoCachette extends JdbcDao<Cachette> implements CachetteDao{
 		PreparedStatement statement;
 		try {
 			//statement = JdbcConnexion.getInstance().createStatement();
-			String txtRequete = "INSERT INTO t_cache(nom_cache,coordonnees_cache,etat_cache,description_cache,id_createur) VALUES ('"+obj.getNom_cache()+"','"+obj.getCoordonnees_cache()+"','"+obj.getEtat_cache()+"','"+obj.getDescription_cache()+"',"+obj.getId_createur()+")";
+			String txtRequete = "INSERT INTO t_cache(nom_cache,coordonnees_cache,date_creation,etat_cache,description_cache,id_createur) VALUES ('"+obj.getNom_cache()+"','"+obj.getCoordonnees_cache()+"','"+obj.getDate_creation()+"','"+obj.getEtat_cache()+"','"+obj.getDescription_cache()+"',"+obj.getId_createur()+")";
 			System.out.print("Requete :"+txtRequete);
 			statement = JdbcConnexion.getInstance().prepareStatement(txtRequete,Statement.RETURN_GENERATED_KEYS);
 			
 			statement.executeUpdate(txtRequete,Statement.RETURN_GENERATED_KEYS);
 			
-			ResultSet res = statement.getGeneratedKeys(); /* Récupération de l'identifiant de la cachette */
+			ResultSet res = statement.getGeneratedKeys(); /* Rï¿½cupï¿½ration de l'identifiant de la cachette */
 			
 			if (res.next()) {
                 int idCache = res.getInt(1);
@@ -182,6 +182,35 @@ public class JdbcDaoCachette extends JdbcDao<Cachette> implements CachetteDao{
 		try {
 			Statement statement = JdbcConnexion.getInstance().createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM t_cache WHERE ETAT_CACHE='V'");
+			while (result.next())
+            {
+                lesCachettes.add(new Cachette(result.getInt("IDT_CACHE"),result.getString("NOM_CACHE"),result.getString("COORDONNEES_CACHE"),result.getString("ETAT_CACHE"),result.getString("DESCRIPTION_CACHE"),result.getInt("ID_CREATEUR")));
+                
+            }
+			statement.close();
+            return lesCachettes;
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Collection<Cachette> findByUser(int idUser) {
+		Collection<Cachette> lesCachettes = new ArrayList<Cachette>();
+		try {
+			PreparedStatement statement;
+			
+			String query = "SELECT * FROM t_cache WHERE id_createur=?";
+			statement = JdbcConnexion.getInstance().prepareStatement(query);
+			statement.setInt(1, idUser);
+			statement.execute();
+			
+			ResultSet result = statement.getResultSet();
+			
 			while (result.next())
             {
                 lesCachettes.add(new Cachette(result.getInt("IDT_CACHE"),result.getString("NOM_CACHE"),result.getString("COORDONNEES_CACHE"),result.getString("ETAT_CACHE"),result.getString("DESCRIPTION_CACHE"),result.getInt("ID_CREATEUR")));

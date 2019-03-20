@@ -40,6 +40,7 @@ public class Cache extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setAttribute("cachettes",  cachetteManager.findAll());
+		request.setAttribute("cachettesUser",  cachetteManager.findByUser(1));
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
 	}
 
