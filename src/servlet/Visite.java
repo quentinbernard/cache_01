@@ -37,7 +37,7 @@ public class Visite extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("visites",  visiteManager.findAll());
+		request.setAttribute("visites",  visiteManager.findByUser(1));
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Visite.jsp").forward(request, response);
 	}
 }
