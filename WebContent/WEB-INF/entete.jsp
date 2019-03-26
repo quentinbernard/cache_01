@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="metier.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,40 +20,29 @@
 </head>
 <body>
 <header>
-   <div class="page-header">
-
-        <div class="row">
-            <div class="col-md-4">
-                <img src="img/logo.jpg" width="25%" height="25%" class="img-rounded" alt="Caches & Co">
-            </div>
-            <div class="col-md-4">
-                <h3>Gestion des caches</h3>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
         <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-road"></span></a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-            </ul>
-             <ul class="nav navbar-nav">
-                <li class="active"><a href="/visite"><span class="glyphicon glyphicon-camera"></span> Visites</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/cache"><span class="glyphicon glyphicon-camera"></span> Caches</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-            </ul>
+        	<% 
+        	User user = (User) request.getSession(true).getAttribute("currentSessionUser");
+        	%>
+	            <ul class="nav navbar-nav">
+	                <li class="active"><a href="/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+	            </ul>
+	        <%if(user != null && user.isValid()){  %>
+	            <ul class="nav navbar-nav">
+	               <li class="active"><a href="/visite"><span class="glyphicon glyphicon-camera"></span> Visites</a></li>
+	            </ul>
+	        <%} %>
+	        <%if(user != null && user.isValid()){  %>
+	            <ul class="nav navbar-nav">
+	                <li class="active"><a href="/cache"><span class="glyphicon glyphicon-road"></span> Caches</a></li>
+	            </ul>
+	        <%} %>
+	        <%if(user == null){ %>
+	            <ul class="nav navbar-nav navbar-right">
+	                 <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
+	            </ul>
+            <%} %>
         </div>
     </nav>
-
 </header>
