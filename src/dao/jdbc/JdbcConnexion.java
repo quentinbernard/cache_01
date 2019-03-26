@@ -12,18 +12,19 @@ public class JdbcConnexion {
     private static Connection connect;
     
     public static Connection getInstance(){
-    if(connect == null){
-    try {
-    	
-            Class.forName("com.mysql.jdbc.Driver");
-            connect = DriverManager.getConnection(url, user, mdp);
-    } catch (SQLException e) {
-    e.printStackTrace();
-  } catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}      
-return connect;
-} 
+	    if(connect == null){
+		    try {
+		    	
+		            Class.forName("com.mysql.jdbc.Driver");
+		            connect = DriverManager.getConnection(url, user, mdp);
+		    } catch (SQLException e) {
+		    	e.printStackTrace();
+		    } 
+		    catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }      
+	    return connect;
+	} 
 }
