@@ -39,7 +39,7 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
 	    
          
 	    
-      System.out.println("Your user name is " + username);          
+      System.out.println("Your username is " + username);          
       System.out.println("Your password is " + password);
 	    
       try 

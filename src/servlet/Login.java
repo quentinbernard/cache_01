@@ -26,46 +26,41 @@ public class Login extends HttpServlet {
     	Login.userManager = maFactory.getUserDao();
     }    
     
-public void doGet(HttpServletRequest request, HttpServletResponse response) 
-			           throws ServletException, java.io.IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, java.io.IOException {
 
-this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-
-}
-
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    try
-{	    
-
-     User user = new User();
-     user.setPseudo(request.getParameter("un"));
-     user.setPassword(request.getParameter("pw"));
-     user = userManager.login(user);
-     System.out.println(user);                           
-     if (user.isValid())
-     {
-	        
-          HttpSession session = request.getSession(true);	    
-          session.setAttribute("currentSessionUser",user); 
-          response.sendRedirect("/home"); //logged-in page      		
-     }
-	        
-     else 
-          response.sendRedirect("/login"); //error page 
-} 
-		
-		
-catch (Throwable theException) 	    
-{
-     System.out.println(theException); 
-}
-}
+    	this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+	
+	}
+	
+	    /**
+	     *
+	     * @param request
+	     * @param response
+	     * @throws ServletException
+	     * @throws IOException
+	     */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    try{	    
+	
+	     User user = new User();
+	     user.setPseudo(request.getParameter("un"));
+	     user.setPassword(request.getParameter("pw"));
+	     user = userManager.login(user);
+	     System.out.println(user);                           
+	     if (user.isValid())
+	     {
+		        
+	          HttpSession session = request.getSession(true);	    
+	          session.setAttribute("currentSessionUser",user); 
+	          response.sendRedirect("/home"); //logged-in page      		
+	     }
+		        
+	     else 
+	          response.sendRedirect("/login"); //error page
+		} 
+		catch (Throwable theException){
+		     System.out.println(theException); 
+		}
+	}
 }
 
