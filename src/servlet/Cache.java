@@ -6,11 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CachetteDao;
 import dao.DaoFactory;
 import dao.sourceData;
 import metier.Cachette;
+import metier.User;
 
 /**
  * Servlet implementation class Cache
@@ -39,8 +41,19 @@ public class Cache extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("cachettes",  cachetteManager.findAll());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("currentSessionUser");
+		System.out.println(user);
+		
+		if(user != null && user.isValid()) {
+			request.setAttribute("cachettes",  cachetteManager.findAll());
+			request.setAttribute("cachettesUser",  cachetteManager.findByUser(1));
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+		}
+		else {
+			response.sendRedirect("/login");
+		}
+		
 	}
 
 	/**

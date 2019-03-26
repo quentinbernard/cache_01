@@ -5,6 +5,6 @@ import java.util.Collection;
 import metier.Cachette;
 
 public interface CachetteDao extends Dao<Cachette> {
-public Collection<Cachette>findAllActives();
-
+	public Collection<Cachette> findAllActives();
+	public Collection<Cachette> findByUser(int idUser);
 }
