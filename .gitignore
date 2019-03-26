@@ -1,0 +1,6 @@
+
+\.classpath
+
+*.class
+
+src/dao/jdbc/JdbcConnexion\.java
