@@ -5,13 +5,16 @@
  */
 package dao.jdbc;
 
+import metier.Cachette;
 import metier.User;
 import dao.UserDao;
 import dao.jdbc.JdbcDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
 /**
  *
@@ -101,9 +104,26 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
     }
 
     @Override
-    public Collection<User> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	public Collection<User> findAll() {
+		Collection<User> lesUsers = new ArrayList<User>();
+		try {
+			Statement statement = JdbcConnexion.getInstance().createStatement();
+			ResultSet result = statement.executeQuery("SELECT * FROM t_user");
+			while (result.next())
+            {
+                lesUsers.add(new User(result.getInt("IDT_CACHE"),result.getString("NOM_CACHE"),result.getString("COORDONNEES_CACHE"),result.getString("ETAT_CACHE"),result.getString("DESCRIPTION_CACHE"),result.getInt("ID_CREATEUR")));
+                
+            }
+			statement.close();
+            return lesUsers;
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
     @Override
     public boolean update(User obj) {

@@ -24,7 +24,6 @@
     <servlet-name>Cache</servlet-name>
     <url-pattern>/cache</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Visite</servlet-name>
     <servlet-class>servlet.Visitage</servlet-class>
