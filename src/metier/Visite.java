@@ -40,6 +40,16 @@ public class Visite {
 		this.resultat_visite = resultat_visite;
 		// this.piece_attachee_01 = new File();
 	}
+	
+	public Visite(LocalDate date_visite, String commentaire_visite, int id_user, int id_cache,
+			String resultat_visite) {
+		super();
+		this.date_visite = date_visite;
+		this.commentaire_visite = commentaire_visite;
+		this.id_user = id_user;
+		this.id_cache = id_cache;
+		this.resultat_visite = resultat_visite;
+	}
 
 	public int getIdt_visite() {
 		return idt_visite;

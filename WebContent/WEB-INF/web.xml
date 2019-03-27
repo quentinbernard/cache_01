@@ -27,7 +27,7 @@
   
   <servlet>
     <servlet-name>Visite</servlet-name>
-    <servlet-class>servlet.Visite</servlet-class>
+    <servlet-class>servlet.Visitage</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Visite</servlet-name>

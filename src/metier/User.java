@@ -10,14 +10,25 @@ package metier;
  * @author noumalla
  */
 public class User {
+	  private int id; 
       private String pseudo;
       private String password;
       private String prenom;
       private String nom;
       private boolean valid;
       private String type; 
+      
+       
 
-    public String getPseudo() {
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getPseudo() {
         return pseudo;
     }
 

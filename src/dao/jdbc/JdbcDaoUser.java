@@ -59,12 +59,14 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
          
          else if (more) 
          {
+        	int id = result.getInt("idt_user");
             String firstName = result.getString("Nom");
             String lastName = result.getString("Prenom");
 	     	
             System.out.println("Bonjour " + firstName);
             utilisateur.setPrenom(firstName);
             utilisateur.setNom(lastName);
+            utilisateur.setId(id);
             utilisateur.setValid(true);
             
             statement.close();
