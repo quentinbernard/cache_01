@@ -12,6 +12,7 @@ import dao.CachetteDao;
 import dao.DaoFactory;
 import dao.UserDao;
 import dao.sourceData;
+import metier.Cachette;
 import metier.User;
 
 /**
@@ -45,7 +46,7 @@ public class GestionUsers extends HttpServlet {
 		
 		if(user != null && user.isValid()) {
 			request.setAttribute("users",  userManager.findAll());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Users.jsp").forward(request, response);
 		}
 		else {
 			response.sendRedirect("/login");
@@ -56,8 +57,29 @@ public class GestionUsers extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		User u;
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("currentSessionUser");
+		
+		if(user != null && user.isValid()) {
+			switch (request.getParameter("btn_user"))
+			{
+				case "MODIFIER":
+					u = userManager.find(Integer.parseInt(request.getParameter("idt_user")));
+					u.setValid(request.getParameter("etat_user"));
+					u.setType(request.getParameter("type_user"));
+					userManager.update(u);
+					break;
+				default:
+					break;
+			}
+			request.setAttribute("users",  userManager.findAll());
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/User.jsp").forward(request, response);
+		}
+		else {
+			response.sendRedirect("/login");
+		}
 	}
 
 }

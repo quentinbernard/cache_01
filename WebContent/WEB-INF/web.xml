@@ -9,6 +9,14 @@
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Users</servlet-name>
+    <servlet-class>servlet.GestionUsers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Users</servlet-name>
+    <url-pattern>/gestionusers</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Login</servlet-name>
     <servlet-class>servlet.Login</servlet-class>
   </servlet>

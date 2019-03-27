@@ -25,7 +25,17 @@ public class User {
 
       // (1,'CURIE','Marie','mcurie@centralelille.fr','mcurie','mcmc','2018-10-12','2018-10-12','V','A',NULL,0,0)
       
-      public User() {}
+      public User() {
+    	  
+      }
+      
+      public User(int id, String pseudo, String etat, String type) {
+    	  super();
+    	  this.id = id;
+    	  this.pseudo = pseudo;
+    	  this.valid = etat;
+    	  this.type = type;
+      }
 
 	public User(String nom, String prenom, String mail, String pseudo, String password, LocalDate date_creation,
 			LocalDate date_validation, String valid, String type) {
