@@ -1,6 +1,4 @@
 <%@ include file="entete.jsp" %>
-<%@ page import="metier.User" %>
-<% User user = (User) request.getSession(true).getAttribute("currentSessionUser"); %>
 <div class="container">
 	<div class="col-md-12 row">
 		 <h2>Ajout d'une nouvelle visite</h2>
