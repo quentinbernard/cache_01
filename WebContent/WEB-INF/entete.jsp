@@ -38,7 +38,7 @@
 	                <li class="active"><a href="/cache"><span class="glyphicon glyphicon-road"></span> Caches</a></li>
 	            </ul>
 	        <%} %>
-	        <%if(user != null && user.isValid()){  %>
+	        <%if(user != null && user.isValid() && user.getType()=="A"){  %>
 	            <ul class="nav navbar-nav">
 	                <li class="active"><a href="/gestionusers"><span class="glyphicon"></span> Users</a></li>
 	            </ul>
