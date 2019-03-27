@@ -25,6 +25,14 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>servlet.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Cache</servlet-name>
     <servlet-class>servlet.Cache</servlet-class>
   </servlet>

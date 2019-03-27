@@ -50,6 +50,11 @@
 	        <%} %>
 	        <%if(user == null){ %>
 	            <ul class="nav navbar-nav navbar-right">
+	                 <li><a href="/register"> Register</a></li> 
+	            </ul>
+            <%} %>
+	        <%if(user == null){ %>
+	            <ul class="nav navbar-nav navbar-right">
 	                 <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
 	            </ul>
             <%} %>
