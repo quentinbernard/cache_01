@@ -26,14 +26,14 @@ public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-		 HttpSession session = request.getSession(false); //On mets l'objet à false pour qu'il ne cree pas la session!!!! 
+		 HttpSession session = request.getSession(false); //On mets l'objet ï¿½ false pour qu'il ne cree pas la session!!!! 
 		 if(session!=null) { //If session nest pas nulle
 			 session.invalidate(); //on supprime toutes les datas concernant la session
-			 request.setAttribute("errMessage", "Deconnexion réussie");
+			 request.setAttribute("errMessage", "Deconnexion rÃ©ussie");
 			 // RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
 			 // requestDispatcher.forward(request, response);
 			 response.sendRedirect("/home");
-			 System.out.println("Déconnexion");
+			 System.out.println("DÃ©connexion");
 		 }
 	 }
 }

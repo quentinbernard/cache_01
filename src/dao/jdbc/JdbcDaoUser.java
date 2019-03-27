@@ -49,11 +49,9 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
          statement.setString(2, password);
          ResultSet result = statement.executeQuery();
          boolean more = result.next();
-         System.out.println(more);
          
          if(!more)
          {
-             System.out.println("Désole, vous n'êtes pas un utilisateur enregistré! créer un compte dabord");
              utilisateur.setValid(false);
          }
          

@@ -16,9 +16,7 @@ public class User {
       private String prenom;
       private String nom;
       private boolean valid;
-      private String type; 
-      
-       
+      private String type;
 
     public int getId() {
 		return id;
@@ -75,4 +73,5 @@ public class User {
     public void setType(String type) {
         this.type = type;
     }
+
 }

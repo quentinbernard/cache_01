@@ -10,6 +10,10 @@
 			   <label for="password">Password</label>
 			   <input name="pw" type="password" class="form-control" id="password" placeholder="Password">
 		 	</div>
+		 	<%if(user == null && session.getAttribute("errLogin")!=null){ %>
+		 		<div style="margin-bottom:10px"><%= session.getAttribute("errLogin") %></div>
+		 		<%session.setAttribute("errLogin", null); %>
+		 	<%} %>
 		  	<button type="submit" class="btn btn-primary">Login</button>
 		</form>
 	</div>
