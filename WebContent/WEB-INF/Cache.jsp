@@ -13,15 +13,9 @@
 			    		<td><label for="description_cache">Description : </label></td>
 			    		<td><input type="text" class="form-control" id="description_cachette" name="description_cachette" /></td>
 			    	</tr>
-			    		<td><label for="etat_cache">Etat : </label></td>
-			    		<td><input disabled type="text" class="form-control" id="etat_cachette" name="etat_cachette" value="C" /></td>
 			    	<tr>
 			    		<td><label for="coordonnees_cache">Coordonnées : </label></td>
 			    		<td><input type="text" class="form-control" id="coordonnees_cachette" name="coordonnees_cachette"/></td>
-			    	</tr>
-			    	<tr>
-			    		<td><label for="createur">Créateur : </label></td>
-			    		<td><input disabled type="text" class="form-control" id="createur" name="createur" value=1 /></td>
 			    	</tr>
 			    	<tr>
 			    		<td><input type="submit" class="btn btn-primary" value="CREER" name="btn_cache" id="btn_cache"/></td>
@@ -65,14 +59,38 @@
 		</div>
 		<%} %>
 	</div>
+	<%if(user != null && user.getType().equals("J")){%>
 	<div class="row">
 		<h2>Liste des caches actives</h2>
 	    <table class=" table table-bordered">
-	    	<tr><th>Nom</th><th>Coordonnées</th></tr>
+	    	<tr><th>Nom</th><th>Coordonnées</th><th>Description</th><th>Etat</th></tr>
 	        <c:forEach var="cachetteUser" items="${ cachettesUser }">
-	            <tr><td><c:out value="${ cachetteUser.nom_cache }" /></td><td> <c:out value="${ cachetteUser.coordonnees_cache }" /></td></tr>
+	            <tr>
+	            	<td> <c:out value="${ cachetteUser.nom_cache }" /></td>
+	            	<td> <c:out value="${ cachetteUser.coordonnees_cache }" /></td>
+	            	<td> <c:out value="${ cachetteUser.description_cache }" /></td>
+	            	<td> <c:out value="${ cachetteUser.etat_cache }" /></td>
+	            </tr>
 	        </c:forEach>
 	    </table>
 	</div>
+	<%}
+	else{
+	%>
+	<div class="row">
+		<h2>Liste des caches</h2>
+	    <table class=" table table-bordered">
+	    	<tr><th>Nom</th><th>Coordonnées</th><th>Description</th><th>Etat</th></tr>
+	        <c:forEach var="cachette" items="${ cachettes }">
+	        	<tr>
+	            	<td> <c:out value="${ cachette.nom_cache }" /></td>
+	            	<td> <c:out value="${ cachette.coordonnees_cache }" /></td>
+	            	<td> <c:out value="${ cachette.description_cache }" /></td>
+	            	<td> <c:out value="${ cachette.etat_cache }" /></td>
+	            </tr>
+	        </c:forEach>
+	    </table>
+	</div>
+	<%} %>
 </div>
 <%@ include file="pied.jsp" %>

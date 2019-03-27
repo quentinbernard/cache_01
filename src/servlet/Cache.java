@@ -43,11 +43,10 @@ public class Cache extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("currentSessionUser");
-		System.out.println(user);
 		
 		if(user != null && user.isValid()) {
 			request.setAttribute("cachettes",  cachetteManager.findAll());
-			request.setAttribute("cachettesUser",  cachetteManager.findByUser(1));
+			request.setAttribute("cachettesUser",  cachetteManager.findByUser(user.getId()));
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
 		}
 		else {
@@ -62,24 +61,32 @@ public class Cache extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Cachette c;
-
-		switch (request.getParameter("btn_cache"))
-		{
-			case "CREER":
-				c = new Cachette(request.getParameter("nom_cachette"),request.getParameter("coordonnees_cachette"),request.getParameter("etat_cachette"),request.getParameter("description_cachette"),Integer.parseInt(request.getParameter("createur")));
-				cachetteManager.create(c);
-				break;
-			case "MODIFIER":
-				c = cachetteManager.find(Integer.parseInt(request.getParameter("idt_cachette")));
-				c.setEtat_cache(request.getParameter("etat_cachette"));
-				cachetteManager.update(c);
-				break;
-			default:
-				break;
-		}
-		request.setAttribute("cachettes",  cachetteManager.findAll());
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("currentSessionUser");
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+		if(user != null && user.isValid()) {
+			switch (request.getParameter("btn_cache"))
+			{
+				case "CREER":
+					c = new Cachette(request.getParameter("nom_cachette"),request.getParameter("coordonnees_cachette"),"C",request.getParameter("description_cachette"),user.getId());
+					cachetteManager.create(c);
+					break;
+				case "MODIFIER":
+					c = cachetteManager.find(Integer.parseInt(request.getParameter("idt_cachette")));
+					c.setEtat_cache(request.getParameter("etat_cachette"));
+					cachetteManager.update(c);
+					break;
+				default:
+					break;
+			}
+			request.setAttribute("cachettes",  cachetteManager.findAll());
+			request.setAttribute("cachettesUser",  cachetteManager.findByUser(user.getId()));
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Cache.jsp").forward(request, response);
+		}
+		else {
+			response.sendRedirect("/login");
+		}
 	}
 
 }
