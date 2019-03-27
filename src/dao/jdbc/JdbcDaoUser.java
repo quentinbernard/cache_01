@@ -14,7 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> 24ffd98fb96950a5a264a5bc88e9f80bf31d238a
 import java.util.Collection;
 /**
  *
