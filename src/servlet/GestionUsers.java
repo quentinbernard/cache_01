@@ -75,7 +75,7 @@ public class GestionUsers extends HttpServlet {
 			}
 			request.setAttribute("users",  userManager.findAll());
 			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/User.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Users.jsp").forward(request, response);
 		}
 		else {
 			response.sendRedirect("/login");

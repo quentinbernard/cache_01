@@ -172,7 +172,28 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
 
     @Override
     public boolean update(User obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	PreparedStatement statement;
+		try {
+			
+			String txtRequete = "UPDATE T_USER SET ETAT_USER=?,TYPE_USER=? WHERE IDT_USER=?";
+			statement = JdbcConnexion.getInstance().prepareStatement(txtRequete);
+			statement.setString(1, obj.getValid());
+			statement.setString(2, obj.getType());
+			statement.setInt(3, obj.getId());
+			
+			statement.executeUpdate();
+			
+            statement.close();
+            
+            
+            return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
     }
 
     @Override

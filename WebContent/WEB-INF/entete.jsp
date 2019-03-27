@@ -40,7 +40,7 @@
 	        <%} %>
 	        <%if(user != null && user.isValid()){  %>
 	            <ul class="nav navbar-nav">
-	                <li class="active"><a href="/gestionusers"><span class="glyphicon glyphicon-road"></span> Users</a></li>
+	                <li class="active"><a href="/gestionusers"><span class="glyphicon"></span> Users</a></li>
 	            </ul>
 	        <%} %>
 	        <%if(user != null && user.isValid()){  %>
