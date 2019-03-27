@@ -46,7 +46,7 @@ public class Register extends HttpServlet {
 	      
 		// (1,'CURIE','Marie','mcurie@centralelille.fr','mcurie','mcmc','2018-10-12','2018-10-12','V','A',NULL,0,0)
 		
-		User utilisateur = new User(nom, prenom, mail, pseudo, password, today, today, "V", "A");
+		User utilisateur = new User(nom, prenom, mail, pseudo, password, today, today, "V", "J");
 		Boolean utilisateurRegistered = userManager.create(utilisateur);
 		
 		if(utilisateurRegistered) {
