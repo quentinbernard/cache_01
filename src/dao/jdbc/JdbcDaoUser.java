@@ -44,9 +44,9 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
 	    
       try 
       {
-         PreparedStatement statement = dao.jdbc.JdbcConnexion.getInstance().prepareStatement("SELECT * FROM T_USER WHERE PSEUDO=?");// AND PASSWORD=?");
-         statement.setString(1,username);
-         //statement.setString(2,password);
+         PreparedStatement statement = dao.jdbc.JdbcConnexion.getInstance().prepareStatement("SELECT * FROM T_USER WHERE PSEUDO=? AND PASSWORD=?");
+         statement.setString(1, username);
+         statement.setString(2, password);
          ResultSet result = statement.executeQuery();
          boolean more = result.next();
          System.out.println(more);
