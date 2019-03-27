@@ -5,22 +5,45 @@
  */
 package metier;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author noumalla
  */
 public class User {
 	  private int id; 
+      private String nom;
+      private String prenom;
+      private String mail;
       private String pseudo;
       private String password;
-      private String prenom;
-      private String nom;
-      private boolean valid;
-      private String type; 
-      
-       
+  	  private LocalDate date_creation;
+  	  private LocalDate date_validation;
+      private String valid;
+      private String type;
 
-    public int getId() {
+      // (1,'CURIE','Marie','mcurie@centralelille.fr','mcurie','mcmc','2018-10-12','2018-10-12','V','A',NULL,0,0)
+      
+      public User() {}
+
+	public User(String nom, String prenom, String mail, String pseudo, String password, LocalDate date_creation,
+			LocalDate date_validation, String valid, String type) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.pseudo = pseudo;
+		this.password = password;
+		this.date_creation = date_creation;
+		this.date_validation = date_validation;
+		this.valid = valid;
+		this.type = type;
+	}
+    
+    
+
+  public int getId() {
 		return id;
 	}
 
@@ -60,19 +83,56 @@ public class User {
         this.nom = nom;
     }
 
-    public boolean isValid() {
-        return valid;
-    }
+	public String getMail() {
+		return mail;
+	}
 
-    public void setValid(boolean valid) {
-        this.valid = valid;
-    }
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 
-    public String getType() {
-        return type;
-    }
+	public LocalDate getDate_creation() {
+		return date_creation;
+	}
 
-    public void setType(String type) {
-        this.type = type;
-    }
+	public void setDate_creation(LocalDate date_creation) {
+		this.date_creation = date_creation;
+	}
+
+	public LocalDate getDate_validation() {
+		return date_validation;
+	}
+
+	public void setDate_validation(LocalDate date_validation) {
+		this.date_validation = date_validation;
+	}
+
+
+
+	public String getValid() {
+		return valid;
+	}
+
+
+
+	public void setValid(String valid) {
+		this.valid = valid;
+	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public boolean isValid() {
+		return (this.valid == "V");
+	}
+
 }
