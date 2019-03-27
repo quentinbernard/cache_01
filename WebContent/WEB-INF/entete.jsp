@@ -38,6 +38,11 @@
 	                <li class="active"><a href="/cache"><span class="glyphicon glyphicon-road"></span> Caches</a></li>
 	            </ul>
 	        <%} %>
+	        <%if(user != null && user.isValid()){  %>
+	            <ul class="nav navbar-nav navbar-right">
+	                 <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Déconnexion</a></li> 
+	            </ul>
+	        <%} %>
 	        <%if(user == null){ %>
 	            <ul class="nav navbar-nav navbar-right">
 	                 <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
