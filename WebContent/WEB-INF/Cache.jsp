@@ -29,6 +29,7 @@
 		    	</table>
 		    </form>
 		</div>
+		<%if(user != null && user.getType().equals("A")){ %>
 		<div class="col-md-6">
 		<h2>Changement d'état d'une cache</h2>
 		    <form method="POST" action="cache">
@@ -62,6 +63,7 @@
 		    	</table>
 		    </form>
 		</div>
+		<%} %>
 	</div>
 	<div class="row">
 		<h2>Liste des caches actives</h2>
