@@ -52,7 +52,6 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
          statement.setString(2, password);
          ResultSet result = statement.executeQuery();
          boolean more = result.next();
-         System.out.println(more);
          
          if(!more)
          {
@@ -109,7 +108,7 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
 			
 			statement.executeUpdate(txtRequete,Statement.RETURN_GENERATED_KEYS);
 			
-			ResultSet res = statement.getGeneratedKeys(); /* Récupération de l'identifiant de la visite */
+			ResultSet res = statement.getGeneratedKeys(); /* Rï¿½cupï¿½ration de l'identifiant de la visite */
 			
 			if (res.next()) {
                 int idUser = res.getInt(1);
