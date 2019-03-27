@@ -101,8 +101,8 @@ public class JdbcDaoUser extends JdbcDao<User> implements UserDao{
 		try {
 			//statement = JdbcConnexion.getInstance().createStatement();
 			String txtRequete = "INSERT INTO t_user (nom,prenom,mail,pseudo,password,date_creation,date_validation,etat_user,type_user) VALUES "
-					+ "('"+obj.getNom()+"','"+obj.getPrenom()+"','"+obj.getMail()+"','"+obj.getPseudo()+"',"+obj.getPassword()+""
-							+ "','"+obj.getDate_creation()+"','"+obj.getDate_validation()+"','"+obj.getValid()+"',"+obj.getType() + ")";
+					+ "('"+obj.getNom()+"','"+obj.getPrenom()+"','"+obj.getMail()+"','"+obj.getPseudo()+"','"+obj.getPassword()+""
+							+ "','"+LocalDate.now()+"','"+LocalDate.now()+"','"+obj.getValid()+"','"+obj.getType() + "')";
 			System.out.print("Requete :"+txtRequete);
 			statement = JdbcConnexion.getInstance().prepareStatement(txtRequete,Statement.RETURN_GENERATED_KEYS);
 			
